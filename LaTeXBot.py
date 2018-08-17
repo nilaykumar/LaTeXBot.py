@@ -52,7 +52,7 @@ async def on_message(message):
     if message.content.startswith(PREFIX):
         # clean up the directory containing the temporary files
         # this will need to be modified if the bot is made async
-        subprocess.run(['rm %s*' % TMP_DIR], stdout=subprocess.DEVNULL, shell=True)
+        subprocess.run(['rm %s* 2>/dev/null' % TMP_DIR], stdout=subprocess.DEVNULL, shell=True)
         # grab the relevant latex from the message
         latex = message.content[len(PREFIX):].strip()
         # if all we have is whitespace, do nothing
