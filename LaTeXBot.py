@@ -11,12 +11,6 @@
 # package. The resulting pdf file is then converted to a png using
 # ghostscript and sent back to the Discord channel.
 
-# TODO implement per-user macros
-# TODO implement templates
-# TODO normalize output sizes
-# TODO allow customization of parameters
-# TODO add non-inline equation support
-
 import discord
 import subprocess
 import datetime
