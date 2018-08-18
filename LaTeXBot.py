@@ -58,9 +58,9 @@ async def on_message(message):
         messageId = message.id
         # start my stopwatch
         t1 = datetime.datetime.now()
-        # create a TeX file based on the template and the given latex code
+        # create a TeX file based on the template, macros, and the given latex code
         with open('%stmp%s.tex' % (TMP_DIR, messageId), 'w+') as f:
-            f.write(template % latex)
+            f.write(template % (macros, latex))
         # here's the real work
         # working in the temp directory, compile the TeX file into a pdf
         # then convert it to a png
@@ -92,6 +92,9 @@ async def on_ready():
 # read the default TeX template
 with open('%sdefault.tex' % TEMPLATE_DIR, 'r') as f:
     template = f.read()
+
+# set the default TeX macros file (from the tmp/ folder, mind you)
+macros = '\input{../%sdefault.tex}' % MACRO_DIR
 
 # read the Discord OAuth2 token
 with open('token', 'r') as f:
